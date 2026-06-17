@@ -1,0 +1,1034 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Interface_Restaurant</class>
+ <widget class="QDialog" name="Interface_Restaurant">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1100</width>
+    <height>731</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dashboard Restaurant — Food Rush</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+QDialog { background-color: #F4F6F0; font-family: 'Segoe UI', sans-serif; }
+#sidebar { background-color: #2D6A4F; }
+#labelLogo { color: #FFFFFF; font-size: 20px; font-weight: bold; padding: 10px; }
+#labelSub { color: #B7E4C7; font-size: 11px; padding-bottom: 10px; }
+#btnNavPlats, #btnNavCategories, #btnNavCommandes, #btnNavMenu, #btnNavStatistiques, #btnNavPlanning {
+    background-color: transparent; color: #D8F3DC; border: none;
+    text-align: left; padding: 12px 20px; font-size: 14px;
+    border-radius: 8px; margin: 2px 8px;
+}
+#btnNavPlats:hover, #btnNavCategories:hover, #btnNavCommandes:hover, #btnNavMenu:hover, #btnNavStatistiques:hover, #btnNavPlanning:hover {
+    background-color: #40916C; color: #FFFFFF;
+}
+#btnNavPlats:checked, #btnNavCategories:checked, #btnNavCommandes:checked, #btnNavMenu:checked, #btnNavStatistiques:checked, #btnNavPlanning:checked {
+    background-color: #1B4332; color: #FFFFFF; font-weight: bold;
+}
+#headerPlats, #headerCategories, #headerCommandes, #headerMenu, #headerStatistiques {
+    background-color: #2D6A4F; border-radius: 10px; padding: 5px;
+}
+#labelTitrePlats, #labelTitreCategories, #labelTitreCommandes, #labelTitreMenu, #labelTitreStatistiques {
+    color: #FFFFFF; font-size: 18px; font-weight: bold; padding-left: 10px;
+}
+QTableWidget { background-color: #FFFFFF; border: 1px solid #D8EDDF; border-radius: 8px; gridline-color: #E9F5EC; font-size: 13px; color: #1B4332; }
+QTableWidget::item { padding: 6px; color: #1B4332; }
+QTableWidget::item:selected { background-color: #B7E4C7; color: #1B4332; }
+QHeaderView::section { background-color: #40916C; color: white; font-weight: bold; padding: 8px; border: none; font-size: 13px; }
+#frameFormulairePlat, #frameFormulaireCategorie { background-color: #FFFFFF; border: 1px solid #D8EDDF; border-radius: 10px; }
+QLineEdit { border: 1.5px solid #B7E4C7; border-radius: 6px; padding: 7px 10px; background: #F8FFF9; font-size: 13px; color: #1B4332; }
+QLineEdit:focus { border-color: #2D6A4F; background: #FFFFFF; }
+QComboBox { border: 1.5px solid #B7E4C7; border-radius: 6px; padding: 7px 10px; background: #F8FFF9; font-size: 13px; color: #1B4332; }
+QComboBox:focus { border-color: #2D6A4F; }
+QComboBox::drop-down { border: none; width: 20px; }
+QComboBox QAbstractItemView { background: #FFFFFF; color: #1B4332; selection-background-color: #B7E4C7; selection-color: #1B4332; border: 1px solid #B7E4C7; font-size: 13px; }
+QCheckBox { font-size: 13px; color: #2D6A4F; font-weight: bold; }
+#labelImagePlat, #labelImageCategorie { border: 2px dashed #40916C; border-radius: 8px; background: #F0FAF3; color: #74C69D; font-size: 13px; min-height: 80px; }
+#btnAjouterPlat, #btnAjouterCategorie { background-color: #2D6A4F; color: white; border: none; border-radius: 8px; padding: 9px 18px; font-size: 13px; font-weight: bold; }
+#btnAjouterPlat:hover, #btnAjouterCategorie:hover { background-color: #1B4332; }
+#btnModifierPlat, #btnModifierCategorie { background-color: #52B788; color: white; border: none; border-radius: 8px; padding: 9px 18px; font-size: 13px; font-weight: bold; }
+#btnSupprimerPlat, #btnSupprimerCategorie { background-color: #E63946; color: white; border: none; border-radius: 8px; padding: 9px 18px; font-size: 13px; font-weight: bold; }
+#btnToggleDisponible { background-color: #74C69D; color: white; border: none; border-radius: 8px; padding: 9px 18px; font-size: 13px; font-weight: bold; }
+#btnChoisirImagePlat, #btnChoisirImageCategorie { background-color: #D8F3DC; color: #2D6A4F; border: 1.5px solid #74C69D; border-radius: 8px; padding: 7px 14px; font-size: 12px; font-weight: bold; }
+#btnChangerStatut { background-color: #2D6A4F; color: white; border: none; border-radius: 8px; padding: 10px 24px; font-size: 14px; font-weight: bold; }
+#btnChangerStatut:hover { background-color: #1B4332; }
+#scrollAreaMenu { border: none; background: transparent; }
+#scrollAreaWidgetContents { background: transparent; }
+   </string>
+  </property>
+  <layout class="QHBoxLayout" name="mainLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QWidget" name="sidebar">
+     <property name="minimumWidth">
+      <number>240</number>
+     </property>
+     <property name="maximumWidth">
+      <number>240</number>
+     </property>
+    <layout class="QVBoxLayout" name="sidebarLayout">
+     <property name="spacing">
+      <number>4</number>
+     </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>20</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>20</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="labelLogo">
+       <property name="text">
+        <string>Food Rush</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelSub">
+       <property name="text">
+        <string>Espace Restaurant</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="frame">
+       <property name="styleSheet">
+        <string>background-color: #40916C; max-height: 1px; margin: 4px 16px;</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Shape::HLine</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnNavMenu">
+       <property name="text">
+        <string>Menu du Restaurant</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnNavPlats">
+       <property name="text">
+        <string>Gestion Plats</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnNavCategories">
+       <property name="text">
+        <string>Categories</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnNavCommandes">
+       <property name="text">
+        <string>Commandes</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnNavStatistiques">
+       <property name="text">
+        <string>Statistiques</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnNavPlanning">
+       <property name="text">
+        <string>Planning &amp; Horaires</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation">
+        <enum>Qt::Orientation::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Policy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>200</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QFrame" name="frameSepDeconnexion">
+       <property name="styleSheet">
+        <string>background-color: #40916C; max-height: 1px; margin: 4px 16px;</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Shape::HLine</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnDeconnexion">
+       <property name="text">
+        <string>Déconnexion</string>
+       </property>
+       <property name="styleSheet">
+        <string>
+QPushButton {
+    background-color: transparent;
+    color: #FFB3B3;
+    border: none;
+    text-align: left;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 8px;
+    margin: 2px 8px;
+}
+QPushButton:hover {
+    background-color: #E63946;
+    color: #FFFFFF;
+}
+        </string>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+      </widget>
+     </item>
+    </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QStackedWidget" name="stackedWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="pageMenu">
+      <layout class="QVBoxLayout" name="pageMenuLayout">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <property name="leftMargin">
+        <number>16</number>
+       </property>
+       <property name="topMargin">
+        <number>16</number>
+       </property>
+       <property name="rightMargin">
+        <number>16</number>
+       </property>
+       <property name="bottomMargin">
+        <number>16</number>
+       </property>
+       <item>
+        <widget class="QFrame" name="headerMenu">
+         <layout class="QHBoxLayout">
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="labelTitreMenu">
+            <property name="text">
+             <string>Menu du Restaurant</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QScrollArea" name="scrollAreaCategoriesBtns">
+         <property name="styleSheet">
+          <string>border: none; background: transparent;</string>
+         </property>
+         <property name="verticalScrollBarPolicy">
+          <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <property name="maximumHeight">
+          <number>55</number>
+         </property>
+         <widget class="QWidget" name="scrollWidgetCatBtns">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>868</width>
+            <height>55</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="layoutCategoriesBtns">
+           <property name="spacing">
+            <number>8</number>
+           </property>
+           <property name="leftMargin">
+            <number>4</number>
+           </property>
+           <property name="rightMargin">
+            <number>4</number>
+           </property>
+           <item>
+            <spacer>
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QScrollArea" name="scrollAreaMenu">
+         <property name="styleSheet">
+          <string>border: none; background: transparent;</string>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>868</width>
+            <height>311</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="layoutCartes">
+           <property name="spacing">
+            <number>12</number>
+           </property>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="pagePlats">
+      <layout class="QVBoxLayout" name="pagePlatsLayout">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <property name="leftMargin">
+        <number>16</number>
+       </property>
+       <property name="topMargin">
+        <number>16</number>
+       </property>
+       <property name="rightMargin">
+        <number>16</number>
+       </property>
+       <property name="bottomMargin">
+        <number>16</number>
+       </property>
+       <item>
+        <widget class="QFrame" name="headerPlats">
+         <layout class="QHBoxLayout">
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="labelTitrePlats">
+            <property name="text">
+             <string>Gestion des Plats</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="platsContent">
+         <property name="spacing">
+          <number>12</number>
+         </property>
+         <item>
+          <widget class="QTableWidget" name="tableauPlats"/>
+         </item>
+         <item>
+          <widget class="QFrame" name="frameFormulairePlat">
+           <layout class="QVBoxLayout" name="formPlatLayout">
+            <property name="spacing">
+             <number>8</number>
+            </property>
+            <property name="leftMargin">
+             <number>14</number>
+            </property>
+            <property name="topMargin">
+             <number>14</number>
+            </property>
+            <property name="rightMargin">
+             <number>14</number>
+            </property>
+            <property name="bottomMargin">
+             <number>14</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="styleSheet">
+               <string>font-size:14px;font-weight:bold;color:#2D6A4F;</string>
+              </property>
+              <property name="text">
+               <string>Formulaire Plat</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="styleSheet">
+               <string>color:#2D6A4F;font-weight:bold;font-size:12px;</string>
+              </property>
+              <property name="text">
+               <string>Nom du plat *</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEditNomPlat">
+              <property name="placeholderText">
+               <string>Ex: Margherita Pizza</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="styleSheet">
+               <string>color:#2D6A4F;font-weight:bold;font-size:12px;</string>
+              </property>
+              <property name="text">
+               <string>Categorie *</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboCategorie"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="styleSheet">
+               <string>color:#2D6A4F;font-weight:bold;font-size:12px;</string>
+              </property>
+              <property name="text">
+               <string>Prix (DH) *</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEditPrixPlat">
+              <property name="placeholderText">
+               <string>Ex: 89.00</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="styleSheet">
+               <string>color:#2D6A4F;font-weight:bold;font-size:12px;</string>
+              </property>
+              <property name="text">
+               <string>Description</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEditDescriptionPlat">
+              <property name="placeholderText">
+               <string>Fromage, tomate fraiche...</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="styleSheet">
+               <string>color:#2D6A4F;font-weight:bold;font-size:12px;</string>
+              </property>
+              <property name="text">
+               <string>Disponibilite</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkBoxDisponible">
+              <property name="text">
+               <string>Disponible</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="styleSheet">
+               <string>color:#2D6A4F;font-weight:bold;font-size:12px;</string>
+              </property>
+              <property name="text">
+               <string>Image</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelImagePlat">
+              <property name="text">
+               <string>Aucune image</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnChoisirImagePlat">
+              <property name="text">
+               <string>Choisir une image</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QGridLayout">
+              <property name="spacing">
+               <number>6</number>
+              </property>
+              <item row="0" column="0">
+               <widget class="QPushButton" name="btnAjouterPlat">
+                <property name="text">
+                 <string>+ Ajouter</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QPushButton" name="btnModifierPlat">
+                <property name="text">
+                 <string>Modifier</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QPushButton" name="btnSupprimerPlat">
+                <property name="text">
+                 <string>Supprimer</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QPushButton" name="btnToggleDisponible">
+                <property name="text">
+                 <string>Dispo</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>10</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="pageCategories">
+      <layout class="QVBoxLayout" name="pageCategoriesLayout">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <property name="leftMargin">
+        <number>16</number>
+       </property>
+       <property name="topMargin">
+        <number>16</number>
+       </property>
+       <property name="rightMargin">
+        <number>16</number>
+       </property>
+       <property name="bottomMargin">
+        <number>16</number>
+       </property>
+       <item>
+        <widget class="QFrame" name="headerCategories">
+         <layout class="QHBoxLayout">
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="labelTitreCategories">
+            <property name="text">
+             <string>Gestion des Categories</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="categoriesContent">
+         <property name="spacing">
+          <number>12</number>
+         </property>
+         <item>
+          <widget class="QTableWidget" name="tableauCategories">
+           <property name="editTriggers">
+            <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+           </property>
+           <property name="alternatingRowColors">
+            <bool>true</bool>
+           </property>
+           <property name="selectionBehavior">
+            <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+           </property>
+           <column>
+            <property name="text">
+             <string>ID</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Nom</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Image</string>
+            </property>
+           </column>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frameFormulaireCategorie">
+           <property name="minimumSize">
+            <size>
+             <width>260</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>300</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <layout class="QVBoxLayout" name="formCatLayout">
+            <property name="spacing">
+             <number>8</number>
+            </property>
+            <property name="leftMargin">
+             <number>14</number>
+            </property>
+            <property name="topMargin">
+             <number>14</number>
+            </property>
+            <property name="rightMargin">
+             <number>14</number>
+            </property>
+            <property name="bottomMargin">
+             <number>14</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="styleSheet">
+               <string>font-size:14px;font-weight:bold;color:#2D6A4F;</string>
+              </property>
+              <property name="text">
+               <string>Formulaire Categorie</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="styleSheet">
+               <string>color:#2D6A4F;font-weight:bold;font-size:12px;</string>
+              </property>
+              <property name="text">
+               <string>Nom *</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEditNomCategorie">
+              <property name="placeholderText">
+               <string>Ex: Pizzas, Burgers...</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="styleSheet">
+               <string>color:#2D6A4F;font-weight:bold;font-size:12px;</string>
+              </property>
+              <property name="text">
+               <string>Image</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelImageCategorie">
+              <property name="text">
+               <string>Aucune image</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnChoisirImageCategorie">
+              <property name="text">
+               <string>Choisir une image</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QGridLayout">
+              <property name="spacing">
+               <number>6</number>
+              </property>
+              <item row="0" column="0">
+               <widget class="QPushButton" name="btnAjouterCategorie">
+                <property name="text">
+                 <string>+ Ajouter</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QPushButton" name="btnModifierCategorie">
+                <property name="text">
+                 <string>Modifier</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QPushButton" name="btnSupprimerCategorie">
+                <property name="text">
+                 <string>Supprimer</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>10</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="pageCommandes">
+      <layout class="QVBoxLayout" name="pageCommandesLayout">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <property name="leftMargin">
+        <number>16</number>
+       </property>
+       <property name="topMargin">
+        <number>16</number>
+       </property>
+       <property name="rightMargin">
+        <number>16</number>
+       </property>
+       <property name="bottomMargin">
+        <number>16</number>
+       </property>
+       <item>
+        <widget class="QFrame" name="headerCommandes">
+         <layout class="QHBoxLayout">
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="labelTitreCommandes">
+            <property name="text">
+             <string>Suivi des Commandes</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="tableauCommandes"/>
+       </item>
+       <item>
+        <layout class="QHBoxLayout">
+         <item>
+          <spacer>
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnChangerStatut">
+           <property name="text">
+            <string>Avancer le statut de la commande</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="pageStatistiques">
+      <layout class="QVBoxLayout" name="pageStatistiquesLayout">
+       <property name="spacing">
+        <number>12</number>
+       </property>
+       <property name="leftMargin">
+        <number>16</number>
+       </property>
+       <property name="topMargin">
+        <number>16</number>
+       </property>
+       <property name="rightMargin">
+        <number>16</number>
+       </property>
+       <property name="bottomMargin">
+        <number>16</number>
+       </property>
+       <item>
+        <widget class="QFrame" name="headerStatistiques">
+         <layout class="QHBoxLayout">
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="labelTitreStatistiques">
+            <property name="text">
+             <string>Statistiques du Restaurant</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QScrollArea" name="scrollAreaStats">
+         <property name="styleSheet">
+          <string>QScrollArea { border: none; background: transparent; }</string>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollWidgetStats">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>868</width>
+            <height>631</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string>background: transparent;</string>
+          </property>
+          <layout class="QVBoxLayout" name="statsContentLayout">
+           <property name="spacing">
+            <number>14</number>
+           </property>
+           <property name="leftMargin">
+            <number>4</number>
+           </property>
+           <property name="topMargin">
+            <number>4</number>
+           </property>
+           <property name="rightMargin">
+            <number>4</number>
+           </property>
+           <property name="bottomMargin">
+            <number>4</number>
+           </property>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <!-- ══════════ PAGE 5 : PLANNING & HORAIRES ══════════ -->
+     <widget class="QWidget" name="pagePlanning">
+      <layout class="QVBoxLayout" name="planningMainLayout">
+       <property name="spacing"><number>12</number></property>
+       <property name="leftMargin"><number>18</number></property>
+       <property name="topMargin"><number>18</number></property>
+       <property name="rightMargin"><number>18</number></property>
+       <property name="bottomMargin"><number>18</number></property>
+       <item>
+        <widget class="QFrame" name="headerPlanning">
+         <property name="styleSheet">
+          <string>background-color: #2D6A4F; border-radius: 10px; padding: 5px;</string>
+         </property>
+         <layout class="QHBoxLayout">
+          <item>
+           <widget class="QLabel" name="labelTitrePlanning">
+            <property name="text"><string> Planning &amp; Horaires</string></property>
+            <property name="styleSheet">
+             <string>color: #FFFFFF; font-size: 18px; font-weight: bold; padding-left: 10px;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer>
+            <property name="orientation"><enum>Qt::Orientation::Horizontal</enum></property>
+            <property name="sizeType"><enum>QSizePolicy::Policy::Expanding</enum></property>
+            <property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnSauvegarderHoraires">
+            <property name="text"><string> Sauvegarder</string></property>
+            <property name="styleSheet">
+             <string>QPushButton{background:#52B788;color:white;border:none;border-radius:8px;padding:8px 20px;font-size:13px;font-weight:bold;}QPushButton:hover{background:#2D6A4F;}</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QScrollArea" name="scrollAreaPlanning">
+         <property name="styleSheet"><string>QScrollArea{border:none;background:transparent;}</string></property>
+         <property name="widgetResizable"><bool>true</bool></property>
+         <widget class="QWidget" name="scrollWidgetPlanning">
+          <property name="styleSheet"><string>background:transparent;</string></property>
+          <layout class="QVBoxLayout" name="planningContentLayout">
+           <property name="spacing"><number>10</number></property>
+           <property name="leftMargin"><number>4</number></property>
+           <property name="topMargin"><number>4</number></property>
+           <property name="rightMargin"><number>4</number></property>
+           <property name="bottomMargin"><number>4</number></property>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ResetWindow</class>
+ <widget class="QDialog" name="ResetWindow">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>860</width><height>540</height></rect>
+  </property>
+  <property name="minimumSize"><size><width>700</width><height>480</height></size></property>
+  <property name="windowTitle"><string>Réinitialisation - FoodOrbit</string></property>
+  <property name="styleSheet">
+   <string notr="true">
+QDialog { background: #F0F7F2; }
+QLineEdit {
+  background: white; color: #1B4332;
+  border: 1.5px solid #C8E6C9; border-radius: 8px;
+  padding: 10px 14px; font-size: 13px;
+}
+QLineEdit:focus { border: 2px solid #2D6A4F; background: white; }
+   </string>
+  </property>
+
+  <layout class="QHBoxLayout" name="mainLayout">
+   <property name="spacing"><number>0</number></property>
+   <property name="leftMargin"><number>0</number></property>
+   <property name="topMargin"><number>0</number></property>
+   <property name="rightMargin"><number>0</number></property>
+   <property name="bottomMargin"><number>0</number></property>
+
+   <!-- ══ GAUCHE ══ -->
+   <item>
+    <widget class="QFrame" name="panneauGauche">
+     <property name="minimumWidth"><number>280</number></property>
+     <property name="maximumWidth"><number>340</number></property>
+     <property name="styleSheet">
+      <string notr="true">
+QFrame#panneauGauche {
+  background: qlineargradient(x1:0,y1:0,x2:0,y2:1,
+    stop:0 #1B4332, stop:1 #40916C);
+}
+QLabel { background: transparent; }
+      </string>
+     </property>
+     <layout class="QVBoxLayout" name="leftVL">
+      <property name="leftMargin"><number>32</number></property>
+      <property name="topMargin"><number>48</number></property>
+      <property name="rightMargin"><number>32</number></property>
+      <property name="bottomMargin"><number>36</number></property>
+      <property name="spacing"><number>0</number></property>
+
+      <item>
+       <widget class="QLabel" name="lblEmoji">
+        <property name="text"><string>🔐</string></property>
+        <property name="alignment"><set>Qt::AlignCenter</set></property>
+        <property name="minimumHeight"><number>80</number></property>
+        <property name="maximumHeight"><number>80</number></property>
+        <property name="styleSheet"><string notr="true">font-size:56px;background:transparent;</string></property>
+       </widget>
+      </item>
+
+      <item>
+       <widget class="QLabel" name="lblBrand">
+        <property name="text"><string>FoodOrbit</string></property>
+        <property name="alignment"><set>Qt::AlignCenter</set></property>
+        <property name="minimumHeight"><number>38</number></property>
+        <property name="maximumHeight"><number>38</number></property>
+        <property name="styleSheet"><string notr="true">font-size:22px;font-weight:bold;color:white;letter-spacing:2px;background:transparent;</string></property>
+       </widget>
+      </item>
+
+      <item>
+       <widget class="QLabel" name="lblSub">
+        <property name="text"><string>Réinitialisation sécurisée</string></property>
+        <property name="alignment"><set>Qt::AlignCenter</set></property>
+        <property name="minimumHeight"><number>28</number></property>
+        <property name="maximumHeight"><number>28</number></property>
+        <property name="styleSheet"><string notr="true">font-size:12px;color:rgba(255,255,255,0.65);background:transparent;</string></property>
+       </widget>
+      </item>
+
+      <item>
+       <spacer>
+        <property name="orientation"><enum>Qt::Vertical</enum></property>
+        <property name="sizeHint" stdset="0"><size><width>0</width><height>28</height></size></property>
+       </spacer>
+      </item>
+
+      <!-- Info box -->
+      <item>
+       <widget class="QFrame" name="infoBox">
+        <property name="styleSheet">
+         <string notr="true">QFrame{background:rgba(255,255,255,0.12);border-radius:10px;}QLabel{background:transparent;}</string>
+        </property>
+        <layout class="QVBoxLayout" name="infoVL">
+         <property name="leftMargin"><number>16</number></property>
+         <property name="topMargin"><number>14</number></property>
+         <property name="rightMargin"><number>16</number></property>
+         <property name="bottomMargin"><number>14</number></property>
+         <property name="spacing"><number>10</number></property>
+         <item>
+          <widget class="QLabel" name="lblHow">
+           <property name="text"><string>Comment ça marche ?</string></property>
+           <property name="styleSheet"><string notr="true">font-size:11px;font-weight:bold;color:white;</string></property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lblS1">
+           <property name="text"><string>① Recevez le code par email</string></property>
+           <property name="styleSheet"><string notr="true">font-size:11px;color:rgba(255,255,255,0.8);</string></property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lblS2">
+           <property name="text"><string>② Entrez le code de vérification</string></property>
+           <property name="styleSheet"><string notr="true">font-size:11px;color:rgba(255,255,255,0.8);</string></property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lblS3">
+           <property name="text"><string>③ Créez votre nouveau mot de passe</string></property>
+           <property name="styleSheet"><string notr="true">font-size:11px;color:rgba(255,255,255,0.8);</string></property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+
+      <item>
+       <spacer>
+        <property name="orientation"><enum>Qt::Vertical</enum></property>
+        <property name="sizeHint" stdset="0"><size><width>0</width><height>40</height></size></property>
+       </spacer>
+      </item>
+
+      <item>
+       <widget class="QLabel" name="lblFooter">
+        <property name="text"><string>🔒  Connexion sécurisée</string></property>
+        <property name="alignment"><set>Qt::AlignCenter</set></property>
+        <property name="styleSheet"><string notr="true">font-size:10px;color:rgba(255,255,255,0.35);background:transparent;</string></property>
+       </widget>
+      </item>
+
+     </layout>
+    </widget>
+   </item>
+
+   <!-- ══ DROITE ══ -->
+   <item>
+    <widget class="QFrame" name="panneauDroit">
+     <property name="styleSheet">
+      <string notr="true">QFrame#panneauDroit{background:#F0F7F2;}</string>
+     </property>
+     <layout class="QVBoxLayout" name="rightVL">
+      <property name="leftMargin"><number>56</number></property>
+      <property name="topMargin"><number>48</number></property>
+      <property name="rightMargin"><number>56</number></property>
+      <property name="bottomMargin"><number>40</number></property>
+      <property name="spacing"><number>0</number></property>
+
+      <item>
+       <widget class="QLabel" name="lblTitle">
+        <property name="text"><string>Réinitialisation du mot de passe</string></property>
+        <property name="minimumHeight"><number>38</number></property>
+        <property name="maximumHeight"><number>38</number></property>
+        <property name="styleSheet"><string notr="true">color:#1B4332;font-size:20px;font-weight:bold;background:transparent;</string></property>
+       </widget>
+      </item>
+
+      <item>
+       <widget class="QLabel" name="lblDesc">
+        <property name="text"><string>Entrez le code à 6 chiffres reçu par email</string></property>
+        <property name="minimumHeight"><number>26</number></property>
+        <property name="maximumHeight"><number>26</number></property>
+        <property name="styleSheet"><string notr="true">color:#52B788;font-size:13px;background:transparent;</string></property>
+       </widget>
+      </item>
+
+      <item>
+       <spacer>
+        <property name="orientation"><enum>Qt::Vertical</enum></property>
+        <property name="sizeHint" stdset="0"><size><width>0</width><height>28</height></size></property>
+       </spacer>
+      </item>
+
+      <!-- StackedWidget -->
+      <item>
+       <widget class="QStackedWidget" name="stackedWidget">
+        <property name="currentIndex"><number>0</number></property>
+
+        <!-- Page 1 : Code -->
+        <widget class="QWidget" name="page">
+         <layout class="QVBoxLayout" name="p1VL">
+          <property name="spacing"><number>12</number></property>
+          <property name="leftMargin"><number>0</number></property>
+          <property name="topMargin"><number>0</number></property>
+          <property name="rightMargin"><number>0</number></property>
+          <property name="bottomMargin"><number>0</number></property>
+
+          <item>
+           <widget class="QLabel" name="lblStep1">
+            <property name="text"><string>Code de vérification</string></property>
+            <property name="minimumHeight"><number>20</number></property>
+            <property name="maximumHeight"><number>20</number></property>
+            <property name="styleSheet"><string notr="true">color:#2D6A4F;font-size:12px;font-weight:bold;background:transparent;</string></property>
+           </widget>
+          </item>
+
+          <item>
+           <widget class="QLineEdit" name="lineEditCode">
+            <property name="minimumHeight"><number>56</number></property>
+            <property name="maximumHeight"><number>56</number></property>
+            <property name="placeholderText"><string>1  2  3  4  5  6</string></property>
+            <property name="alignment"><set>Qt::AlignCenter</set></property>
+            <property name="styleSheet">
+             <string notr="true">
+QLineEdit {
+  background: white; color: #2D6A4F;
+  border: 2px solid #C8E6C9; border-radius: 10px;
+  font-size: 26px; font-weight: bold; letter-spacing: 14px;
+  padding: 10px 20px;
+}
+QLineEdit:focus { border-color: #2D6A4F; }
+             </string>
+            </property>
+           </widget>
+          </item>
+
+          <item>
+           <widget class="QLabel" name="lblHint">
+            <property name="text"><string>⏱  Le code expire dans 10 minutes</string></property>
+            <property name="alignment"><set>Qt::AlignCenter</set></property>
+            <property name="minimumHeight"><number>22</number></property>
+            <property name="maximumHeight"><number>22</number></property>
+            <property name="styleSheet"><string notr="true">color:#AAC4B0;font-size:11px;background:transparent;</string></property>
+           </widget>
+          </item>
+
+          <item>
+           <widget class="QPushButton" name="btnVerifier">
+            <property name="text"><string>Vérifier le code  →</string></property>
+            <property name="minimumHeight"><number>48</number></property>
+            <property name="maximumHeight"><number>48</number></property>
+            <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+            <property name="styleSheet">
+             <string notr="true">
+QPushButton {
+  background: qlineargradient(x1:0,y1:0,x2:1,y2:0,stop:0 #1B4332,stop:1 #40916C);
+  color: white; border: none; border-radius: 10px;
+  font-size: 14px; font-weight: bold;
+}
+QPushButton:hover { background: #1B4332; }
+             </string>
+            </property>
+           </widget>
+          </item>
+
+          <item>
+           <spacer>
+            <property name="orientation"><enum>Qt::Vertical</enum></property>
+            <property name="sizeHint" stdset="0"><size><width>0</width><height>10</height></size></property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+
+        <!-- Page 2 : Nouveau MDP -->
+        <widget class="QWidget" name="page_2">
+         <layout class="QVBoxLayout" name="p2VL">
+          <property name="spacing"><number>12</number></property>
+          <property name="leftMargin"><number>0</number></property>
+          <property name="topMargin"><number>0</number></property>
+          <property name="rightMargin"><number>0</number></property>
+          <property name="bottomMargin"><number>0</number></property>
+
+          <item>
+           <widget class="QLabel" name="lblNMDP">
+            <property name="text"><string>Nouveau mot de passe</string></property>
+            <property name="minimumHeight"><number>20</number></property>
+            <property name="maximumHeight"><number>20</number></property>
+            <property name="styleSheet"><string notr="true">color:#2D6A4F;font-size:12px;font-weight:bold;background:transparent;</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEditNewMDP">
+            <property name="minimumHeight"><number>44</number></property>
+            <property name="maximumHeight"><number>44</number></property>
+            <property name="placeholderText"><string>Minimum 6 caractères</string></property>
+           </widget>
+          </item>
+
+          <item>
+           <widget class="QLabel" name="lblCMDP">
+            <property name="text"><string>Confirmer le mot de passe</string></property>
+            <property name="minimumHeight"><number>20</number></property>
+            <property name="maximumHeight"><number>20</number></property>
+            <property name="styleSheet"><string notr="true">color:#2D6A4F;font-size:12px;font-weight:bold;background:transparent;</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEditConfirmMDP">
+            <property name="minimumHeight"><number>44</number></property>
+            <property name="maximumHeight"><number>44</number></property>
+            <property name="placeholderText"><string>Répétez le mot de passe</string></property>
+           </widget>
+          </item>
+
+          <item>
+           <widget class="QPushButton" name="btnReset">
+            <property name="text"><string>Enregistrer le mot de passe  →</string></property>
+            <property name="minimumHeight"><number>48</number></property>
+            <property name="maximumHeight"><number>48</number></property>
+            <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+            <property name="styleSheet">
+             <string notr="true">
+QPushButton {
+  background: qlineargradient(x1:0,y1:0,x2:1,y2:0,stop:0 #1B4332,stop:1 #40916C);
+  color: white; border: none; border-radius: 10px;
+  font-size: 14px; font-weight: bold;
+}
+QPushButton:hover { background: #1B4332; }
+             </string>
+            </property>
+           </widget>
+          </item>
+
+          <item>
+           <spacer>
+            <property name="orientation"><enum>Qt::Vertical</enum></property>
+            <property name="sizeHint" stdset="0"><size><width>0</width><height>10</height></size></property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+
+       </widget>
+      </item>
+
+      <item>
+       <spacer>
+        <property name="orientation"><enum>Qt::Vertical</enum></property>
+        <property name="sizeHint" stdset="0"><size><width>0</width><height>20</height></size></property>
+       </spacer>
+      </item>
+
+     </layout>
+    </widget>
+   </item>
+
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
