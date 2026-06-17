@@ -30,7 +30,7 @@
 
 ### Intelligence Artificielle
 - **OrderValidator** : validation asynchrone des commandes via Groq AI (prise en compte des horaires, charge cuisine, total commande)
-- **AIAssistant** : assistant conversationnel intégré au panier client, avec suggestions rapides (Pizza, Végétarien, < 50 DH, Épicé)
+- **AIAssistant** : assistant conversationnel intégré au panier client, avec suggestions rapides
 
 ### Multi-langue
 - Interface disponible en **Français**, **Anglais** et **Arabe**
